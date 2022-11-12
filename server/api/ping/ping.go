@@ -3,7 +3,7 @@ package ping
 import (
 	"luckyProxy/common/logx"
 	"luckyProxy/common/result"
-	"luckyProxy/server/internal/svc"
+	"luckyProxy/server/svc"
 	"net/http"
 )
 

@@ -2,11 +2,11 @@ package api
 
 import (
 	"github.com/zeromicro/go-zero/rest"
-	"luckyProxy/server/internal/api/ping"
-	"luckyProxy/server/internal/api/proxy"
-	"luckyProxy/server/internal/api/user"
-	"luckyProxy/server/internal/api/ws"
-	"luckyProxy/server/internal/svc"
+	"luckyProxy/server/api/ping"
+	"luckyProxy/server/api/proxy"
+	"luckyProxy/server/api/user"
+	"luckyProxy/server/api/ws"
+	"luckyProxy/server/svc"
 	"net/http"
 )
 

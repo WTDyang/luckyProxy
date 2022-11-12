@@ -3,8 +3,8 @@ package user
 import (
 	"github.com/rs/xid"
 	"luckyProxy/common/result"
-	"luckyProxy/server/internal/cache"
-	"luckyProxy/server/internal/svc"
+	"luckyProxy/server/cache"
+	"luckyProxy/server/svc"
 	"net/http"
 )
 

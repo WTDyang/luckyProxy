@@ -3,7 +3,7 @@ package internetResponse
 import (
 	"luckyProxy/common/logx"
 	"luckyProxy/common/protocal"
-	"luckyProxy/server/internal/cache"
+	"luckyProxy/server/cache"
 )
 
 func Handle(internetResponse protocal.IntranetResponse) {

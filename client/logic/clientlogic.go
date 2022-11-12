@@ -2,9 +2,8 @@ package logic
 
 import (
 	"context"
-
-	"luckyProxy/client/internal/svc"
-	"luckyProxy/client/internal/types"
+	"luckyProxy/client/svc"
+	"luckyProxy/client/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

@@ -2,10 +2,10 @@ package handler
 
 import (
 	"luckyProxy/client"
-	"luckyProxy/client/internal/handler/addProxy"
-	"luckyProxy/client/internal/handler/removeProxy"
-	"luckyProxy/client/internal/handler/userConnect"
-	"luckyProxy/client/internal/handler/userRequest"
+	"luckyProxy/client/handler/addProxy"
+	"luckyProxy/client/handler/removeProxy"
+	"luckyProxy/client/handler/userConnect"
+	"luckyProxy/client/handler/userRequest"
 	"luckyProxy/common/logx"
 	"luckyProxy/common/protocal"
 )

@@ -1,4 +1,4 @@
-package config
+package client
 
 type Config struct {
 	Server struct {

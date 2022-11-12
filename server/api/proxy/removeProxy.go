@@ -9,8 +9,8 @@ import (
 	"luckyProxy/common/model/req"
 	"luckyProxy/common/protocal"
 	"luckyProxy/common/result"
-	"luckyProxy/server/internal/cache"
-	"luckyProxy/server/internal/svc"
+	cache2 "luckyProxy/server/cache"
+	"luckyProxy/server/svc"
 	"net/http"
 )
 
@@ -22,12 +22,12 @@ func RemoveProxy(svcContext *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		info, ok := cache.ProxyInfoContainer.Get(token)
+		info, ok := cache2.ProxyInfoContainer.Get(token)
 		if !ok {
 			result.HttpBadRequest(w, model.ProxyInfoNotFound.Error())
 		}
 
-		server, b := cache.ServerContainer.Get(token)
+		server, b := cache2.ServerContainer.Get(token)
 		if !b {
 			result.HttpBadRequest(w, model.ClientNotFound.Error())
 			return
@@ -76,7 +76,7 @@ func RemoveProxy(svcContext *svc.ServiceContext) http.HandlerFunc {
 		}()
 
 		// update cache
-		cache.ProxyInfoContainer.Put(token, serverProxyInfos)
+		cache2.ProxyInfoContainer.Put(token, serverProxyInfos)
 		httpx.OkJson(w, clientProxyInfos)
 	}
 }

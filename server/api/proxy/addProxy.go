@@ -10,8 +10,8 @@ import (
 	"luckyProxy/common/model/req"
 	"luckyProxy/common/protocal"
 	"luckyProxy/common/result"
-	"luckyProxy/server/internal/cache"
-	"luckyProxy/server/internal/svc"
+	"luckyProxy/server/cache"
+	"luckyProxy/server/svc"
 	"net/http"
 )
 

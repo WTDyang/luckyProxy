@@ -18,33 +18,34 @@ import (
 )
 
 var (
-	cc        = flag.String("c", "client.yaml", "the config file path")
-	tokenFlag = flag.String("t", "", "the access token")
-	logFile   = flag.String("l", "./client.log", "the log file path, e.g: ./client.log")
+	cc        = flag.String("c", "client.yaml", "配置文件路径 e.g: ./client.yaml")
+	tokenFlag = flag.String("t", "", "指定连接token")
+	logFile   = flag.String("l", "./client.log", "日志输出路径, e.g: ./client.log")
 	cConfig   client.Config
 	token     string
 )
 
 func init() {
+	//首先读取命令行参数
 	flag.Parse()
-
+	//加载配置文件
 	conf.MustLoad(*cc, &cConfig)
 
 	if *logFile != "" {
 		out, err := os.OpenFile(*logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 		if err != nil {
-			logx.Fatal().Err(err).Msg("open log file fail")
+			logx.Fatal().Err(err).Msg("文件打开失败")
 		}
 		logx.InitLogger(out)
 	} else {
-		logx.InitLogger(zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: "2006/01/02 - 15:04:05"})
+		logx.InitLogger(zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: "2022/11/12 - 15:04:05"})
 	}
 
 	logx.UseLogLevel(logx.GetLogLevel(cConfig.LogLevel))
 	zlog.SetWriter(zerologx.NewZeroLogWriter(logx.GetLog()))
 
 	serverAddr := utils.FormatAddr(cConfig.Server.Host, cConfig.Server.Port)
-	logx.Info().Msgf("server addr %s", serverAddr)
+	logx.Info().Msgf("服务器地址 %s", serverAddr)
 
 	if *tokenFlag == utils.EmptyStr {
 		token = generateToken(serverAddr)
@@ -56,28 +57,32 @@ func init() {
 }
 
 func main() {
+	//创建连接
 	c := client.NewClient(token, cConfig)
 
+	//通过websocket进行连接
 	c.Connect(func(wsx *wsx.Wsx) {
 		wsx.MountBinaryFunc(handler.Dispatch(c))
 	})
 
+	//读取数据
 	c.ReaderCommand(command.Dispatch)
 }
 
+//获取token
 func generateToken(serverAddr string) string {
-	logx.Info().Msg("token is empty,call server generate")
+	logx.Info().Msg("未指定token，等待服务器生成......")
 	response, err := http.Get("http://" + serverAddr + "/user/auth")
 	if err != nil {
-		logx.Fatal().Err(err).Msg("call server generate token")
+		logx.Fatal().Err(err).Msgf("请求服务器[ %s ]生成token", serverAddr)
 	}
 
 	defer response.Body.Close()
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		logx.Fatal().Err(err).Msg("read server response fail")
+		logx.Fatal().Err(err).Msg("服务器读取失败")
 	}
 
-	logx.Info().Msg("generate token success")
+	logx.Info().Msg("token获取成功")
 	return string(body)
 }

@@ -25,6 +25,7 @@ func (c *Container) handleTCP(info *pkg.ServerProxyInfo) (error, *pkg.ClientProx
 	info.ClientProxyInfo = cp
 	info.BindListener = tcp
 
+	//开启线程
 	go func() {
 		for {
 			// accept user connection

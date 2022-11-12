@@ -2,9 +2,8 @@
 package handler
 
 import (
+	"luckyProxy/server/svc"
 	"net/http"
-
-	"luckyProxy/server/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

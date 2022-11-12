@@ -6,9 +6,9 @@ import (
 	"luckyProxy/common/protocal"
 	"luckyProxy/common/result"
 	"luckyProxy/common/wsx"
-	"luckyProxy/server/internal/api/ws/handler"
-	"luckyProxy/server/internal/cache"
-	"luckyProxy/server/internal/svc"
+	"luckyProxy/server/api/ws/handler"
+	"luckyProxy/server/cache"
+	"luckyProxy/server/svc"
 	"net/http"
 	"time"
 )

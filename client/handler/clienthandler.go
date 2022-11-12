@@ -1,12 +1,12 @@
 package handler
 
 import (
+	"luckyProxy/client/logic"
+	"luckyProxy/client/svc"
+	"luckyProxy/client/types"
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
-	"luckyProxy/client/internal/logic"
-	"luckyProxy/client/internal/svc"
-	"luckyProxy/client/internal/types"
 )
 
 func ClientHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
