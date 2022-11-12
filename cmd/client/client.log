@@ -1,0 +1,12 @@
+{"level":"info","time":"2022/11/12 - 19:06:21","message":"server addr localhost:9999"}
+{"level":"info","time":"2022/11/12 - 19:06:21","message":"token is empty,call server generate"}
+{"level":"info","time":"2022/11/12 - 19:06:21","message":"generate token success"}
+{"level":"info","time":"2022/11/12 - 19:06:21","message":"token: 404 page not found\n"}
+{"level":"info","time":"2022/11/12 - 19:08:39","message":"server addr localhost:9999"}
+{"level":"info","time":"2022/11/12 - 19:08:39","message":"token is empty,call server generate"}
+{"level":"info","time":"2022/11/12 - 19:08:39","message":"generate token success"}
+{"level":"info","time":"2022/11/12 - 19:08:39","message":"token: cdnntdu4js96nr6tnjm0"}
+{"level":"info","time":"2022/11/12 - 19:09:02","message":"add proxy: intranet [localhost:8080] to [localhost:50983]"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:09:39","message":"CPU: 0m, MEMORY: Alloc=2.1Mi, TotalAlloc=2.1Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:10:39","message":"CPU: 0m, MEMORY: Alloc=2.3Mi, TotalAlloc=2.3Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:11:39","message":"CPU: 0m, MEMORY: Alloc=2.4Mi, TotalAlloc=2.4Mi, Sys=11.3Mi, NumGC=0"}

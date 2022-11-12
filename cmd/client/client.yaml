@@ -1,0 +1,5 @@
+Server:
+  # the server api port
+  Port: 9999
+  # the server ip
+  Host: 182.92.183.75
