@@ -10,3 +10,28 @@
 {"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:09:39","message":"CPU: 0m, MEMORY: Alloc=2.1Mi, TotalAlloc=2.1Mi, Sys=11.3Mi, NumGC=0"}
 {"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:10:39","message":"CPU: 0m, MEMORY: Alloc=2.3Mi, TotalAlloc=2.3Mi, Sys=11.3Mi, NumGC=0"}
 {"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:11:39","message":"CPU: 0m, MEMORY: Alloc=2.4Mi, TotalAlloc=2.4Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","time":"2022/11/12 - 19:55:17","message":"server addr localhost:9999"}
+{"level":"info","time":"2022/11/12 - 19:55:17","message":"token is empty,call server generate"}
+{"level":"info","time":"2022/11/12 - 19:55:17","message":"generate token success"}
+{"level":"info","time":"2022/11/12 - 19:55:17","message":"token: cdnoj9e4js95dh31fctg"}
+{"level":"info","time":"2022/11/12 - 19:55:46","message":"add proxy: intranet [localhost:8080] to [localhost:50967]"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:56:17","message":"CPU: 0m, MEMORY: Alloc=2.1Mi, TotalAlloc=2.1Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:57:17","message":"CPU: 0m, MEMORY: Alloc=2.3Mi, TotalAlloc=2.3Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:58:17","message":"CPU: 0m, MEMORY: Alloc=2.4Mi, TotalAlloc=2.4Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 19:59:17","message":"CPU: 0m, MEMORY: Alloc=2.5Mi, TotalAlloc=2.5Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"error","time":"2022/11/12 - 19:59:34","message":"internet not found, discard message"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:00:17","message":"CPU: 0m, MEMORY: Alloc=2.6Mi, TotalAlloc=2.6Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:01:17","message":"CPU: 0m, MEMORY: Alloc=2.7Mi, TotalAlloc=2.7Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:02:17","message":"CPU: 0m, MEMORY: Alloc=2.8Mi, TotalAlloc=2.8Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:03:17","message":"CPU: 0m, MEMORY: Alloc=2.9Mi, TotalAlloc=2.9Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:04:17","message":"CPU: 0m, MEMORY: Alloc=3.1Mi, TotalAlloc=3.1Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:05:17","message":"CPU: 0m, MEMORY: Alloc=3.2Mi, TotalAlloc=3.2Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:06:17","message":"CPU: 0m, MEMORY: Alloc=3.3Mi, TotalAlloc=3.3Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:07:17","message":"CPU: 0m, MEMORY: Alloc=3.4Mi, TotalAlloc=3.4Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:08:17","message":"CPU: 0m, MEMORY: Alloc=3.5Mi, TotalAlloc=3.5Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:09:17","message":"CPU: 0m, MEMORY: Alloc=3.6Mi, TotalAlloc=3.6Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:10:17","message":"CPU: 0m, MEMORY: Alloc=3.7Mi, TotalAlloc=3.7Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:11:17","message":"CPU: 0m, MEMORY: Alloc=3.8Mi, TotalAlloc=3.8Mi, Sys=11.3Mi, NumGC=0"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:12:17","message":"CPU: 0m, MEMORY: Alloc=0.9Mi, TotalAlloc=3.9Mi, Sys=12.1Mi, NumGC=1"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:13:17","message":"CPU: 0m, MEMORY: Alloc=1.0Mi, TotalAlloc=4.1Mi, Sys=12.3Mi, NumGC=1"}
+{"level":"info","caller":"stat/usage.go:61","time":"2022/11/12 - 20:14:17","message":"CPU: 0m, MEMORY: Alloc=0.9Mi, TotalAlloc=4.2Mi, Sys=12.5Mi, NumGC=2"}
