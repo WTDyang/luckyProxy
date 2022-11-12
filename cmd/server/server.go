@@ -2,15 +2,15 @@ package main
 
 import (
 	"flag"
-	"github.com/fzdwx/burst/pkg/logx"
-	"github.com/fzdwx/burst/server"
-	"github.com/fzdwx/burst/server/api"
-	"github.com/fzdwx/burst/server/svc"
 	"github.com/rs/zerolog"
 	"github.com/zeromicro/go-zero/core/conf"
 	zlog "github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/zero-contrib/logx/zerologx"
+	"luckyProxy/common/logx"
+	"luckyProxy/server"
+	"luckyProxy/server/api"
+	"luckyProxy/server/svc"
 	"os"
 )
 
@@ -32,7 +32,7 @@ func init() {
 		}
 		logx.InitLogger(out)
 	} else {
-		logx.InitLogger(zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: "2006/01/02 - 15:04:05"})
+		logx.InitLogger(zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: "2022/11/12 - 15:04:05"})
 	}
 
 	logx.UseLogLevel(logx.GetLogLevel(sConfig.LogLevel))
