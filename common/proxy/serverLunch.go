@@ -1,6 +1,7 @@
 package proxy
 
 import (
+	"fmt"
 	"io"
 	utils "luckyProxy"
 	pkg "luckyProxy/common"
@@ -44,11 +45,16 @@ func (c Container) Lunch(infos []*pkg.ServerProxyInfo) (error, []pkg.ClientProxy
 
 		switch info.ChannelType {
 		case pkg.TCP:
+			fmt.Println("代理tcp")
 			err, clientInfo, listener = c.handleTCP(info)
 		case pkg.HTTP:
+			fmt.Println("代理http")
 			err, clientInfo, listener = c.handlerHttp(info)
 		case pkg.UDP:
+			fmt.Println("代理udp")
 			err, clientInfo, listener = c.handleUdp(info)
+		default:
+			return utils.NewError("不支持的协议类型 %s", info.ChannelType), nil, nil
 		}
 
 		if err != nil {
@@ -56,7 +62,7 @@ func (c Container) Lunch(infos []*pkg.ServerProxyInfo) (error, []pkg.ClientProxy
 		}
 
 		if clientInfo == nil {
-			return utils.NewError("unSupport channelType %s", pkg.UDP), nil, nil
+			return utils.NewError("不支持的协议类型 %s", info.ChannelType), nil, nil
 		}
 
 		clientInfos = append(clientInfos, *clientInfo)

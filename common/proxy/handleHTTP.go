@@ -7,5 +7,5 @@ import (
 
 func (c *Container) handlerHttp(info *pkg.ServerProxyInfo) (error, *pkg.ClientProxyInfo, io.Closer) {
 	// todo handler http
-	return nil, nil, nil
+	return c.handleTCP(info)
 }
