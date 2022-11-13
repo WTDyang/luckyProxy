@@ -14,6 +14,7 @@ import (
 	"net"
 	"net/url"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -104,6 +105,13 @@ func (c *Client) GetProxy(key string) (pkg.ClientProxyInfo, bool) {
 	info, ok := c.proxy[key]
 	return info, ok
 }
+func (c *Client) GetProxyList() map[string]string {
+	info := make(map[string]string)
+	for _, value := range c.proxy {
+		info[value.IntranetAddr] = c.serverHost + ":" + strconv.Itoa(value.ServerPort)
+	}
+	return info
+}
 
 func (c *Client) AddInterNetService(net *InternetService) {
 	c.internet[net.connId] = net
@@ -121,7 +129,7 @@ func (c Client) RemoveInterNetService(interNet *InternetService) {
 func (c *Client) ReaderCommand(f func(line string, client *Client)) {
 	lr := linereader.New(os.Stdin)
 
-	fmt.Println("please input command: (u for usage)")
+	fmt.Println("请输入指令：（访问help查看指令集）")
 	// Get all the lines
 	for {
 		fmt.Print("> ")

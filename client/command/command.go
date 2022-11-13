@@ -22,6 +22,7 @@ func init() {
 	commands["quit"] = &quitCommand{}
 	commands["addp"] = &addProxyCommand{}
 	commands["removep"] = &removeProxyCommand{}
+	commands["list"] = &listCommand{}
 }
 
 func Dispatch(line string, client *client.Client) {
@@ -35,6 +36,8 @@ func Dispatch(line string, client *client.Client) {
 		commands["addp"].run(split[1:], client)
 	case "removep", "rp":
 		commands["removep"].run(split[1:], client)
+	case "list", "ls", "l":
+		commands["list"].run(split[1:], client)
 	case "version":
 		showVersion()
 	default:
