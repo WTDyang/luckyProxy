@@ -1,7 +1,6 @@
 package wsx
 
 import (
-	"fmt"
 	"github.com/gorilla/websocket"
 	"github.com/rs/xid"
 	"github.com/rs/zerolog"
@@ -176,8 +175,8 @@ func (w *Wsx) StartWriteHandler(pingPeriod time.Duration) {
 
 	for {
 		select {
+		//文本信息传输
 		case message := <-w.writeTextChan:
-			fmt.Println("11111111111111111111111111111111111")
 			if message == nil {
 				return
 			}
@@ -193,6 +192,7 @@ func (w *Wsx) StartWriteHandler(pingPeriod time.Duration) {
 			} else {
 				w.debug().Int("write", len(message)).Msg("WebSocket Send Text")
 			}
+			//二进制编码信息传输
 		case message := <-w.writeBinaryChan:
 			if message == nil {
 				return
@@ -220,12 +220,12 @@ func (w *Wsx) StartWriteHandler(pingPeriod time.Duration) {
 	}
 }
 
-// Closed the websocket connection is closed ?
+// Closed 检查连接
 func (w *Wsx) Closed() bool {
 	return Ping(w.conn) != nil
 }
 
-// Close the connection with the peer
+// Close 关闭连接
 func (w *Wsx) Close() {
 	w.lock.Lock()
 	defer w.lock.Unlock()
@@ -250,12 +250,12 @@ func (w *Wsx) Close() {
 	close(w.writeTextChan)
 }
 
-// websocket easy debug log
+// debug 打印debug日志
 func (w *Wsx) debug() *zerolog.Event {
 	return logx.Debug().Str("id", w.IdStr).Str("ip", w.AddrStr)
 }
 
-// printWebSocketError check close error
+// printWebSocketError 打印异常日志
 func (w *Wsx) printWebSocketError(op string, err error) {
 	if strings.Contains(err.Error(), "use of closed network connection") {
 		return

@@ -14,11 +14,13 @@ func MountRouters(s *rest.Server, svcContext *svc.ServiceContext) {
 	s.AddRoutes(
 		[]rest.Route{
 			{
+				//建立连接
 				Method:  http.MethodGet,
 				Path:    "/accept",
 				Handler: ws.Accept(svcContext),
 			},
 			{
+				//客户端服务端测通
 				Method:  http.MethodGet,
 				Path:    "/ping",
 				Handler: ping.Ping(svcContext),
@@ -28,6 +30,7 @@ func MountRouters(s *rest.Server, svcContext *svc.ServiceContext) {
 
 	s.AddRoutes([]rest.Route{
 		{
+			//获取token
 			Method:  http.MethodGet,
 			Path:    "/auth",
 			Handler: user.Auth(svcContext),

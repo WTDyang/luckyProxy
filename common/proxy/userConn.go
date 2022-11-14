@@ -31,7 +31,7 @@ func NewUserConn(conn net.Conn, c *Container, key string) *UserConn {
 	}
 }
 
-// OnUserConnect notify the client to monitor the intranet service
+// OnUserConnect 通知客户端进行客户端监听
 func (u UserConn) OnUserConnect() error {
 	bytes, err := protocal.NewUserConnect(u.key, u.Id).Encode()
 	if err != nil {

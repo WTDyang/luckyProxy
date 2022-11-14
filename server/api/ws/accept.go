@@ -28,21 +28,21 @@ func Accept(svcContext *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		// upgrade to websocket
+		// 协议升级为websocket
 		conn, err := svcContext.WsUpgrader.Upgrade(w, r, nil)
 		if err != nil {
 			result.HttpBadRequest(w, "upgrade to websocket fail:"+err.Error())
 			return
 		}
 
-		// init websocket client
+		// 初始化websocket客户端
 		ws := wsx.NewClassicWsx(conn)
 		cache.ServerContainer.Put(token, ws)
 
 		ws.MountBinaryFunc(func(bytes []byte) {
 			decode, err := protocal.Decode(bytes)
 			if err != nil {
-				logx.Err(err).Msg("decode burst")
+				logx.Err(err).Msg("编码异常")
 				return
 			}
 

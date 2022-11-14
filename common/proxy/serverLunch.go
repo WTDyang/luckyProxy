@@ -72,7 +72,7 @@ func (c Container) Lunch(infos []*pkg.ServerProxyInfo) (error, []pkg.ClientProxy
 	return nil, clientInfos, listeners
 }
 
-// Close the local service
+// Close 关闭本地连接
 func (c Container) Close() {
 	c.Wsx.Close()
 
@@ -81,7 +81,7 @@ func (c Container) Close() {
 	}
 }
 
-// AddCloser add closer
+// AddCloser 关闭连接的责任链
 func (c *Container) AddCloser(closer io.Closer) {
 	c.closers = append(c.closers, closer)
 }

@@ -28,7 +28,7 @@ func (c *Container) handleTCP(info *pkg.ServerProxyInfo) (error, *pkg.ClientProx
 	//开启线程
 	go func() {
 		for {
-			// accept user connection
+			// 首先和客户端建立tcp连接
 			conn, err := tcp.AcceptTCP()
 			if err != nil {
 				if strings.ContainsAny("use of closed network connection", err.Error()) || strings.ContainsAny("EOF", err.Error()) {
@@ -39,17 +39,21 @@ func (c *Container) handleTCP(info *pkg.ServerProxyInfo) (error, *pkg.ClientProx
 				return
 			}
 
+			//对建立的tcp连接进行包装
 			userConn := NewUserConn(conn, c, cp.Key())
 			c.AddCloser(conn)
 			c.AddUserConn(userConn)
+
+			//指定关闭连接方式
 			clean := c.CleanUserConn(userConn)
 
+			//客户端收到
 			err = userConn.OnUserConnect()
 			if err != nil {
 				clean()
 				continue
 			}
-
+			
 			info.BindUserConn = append(info.BindUserConn, userConn.conn)
 			go userConn.StartRead(clean)
 			go userConn.StartWrite(clean)
