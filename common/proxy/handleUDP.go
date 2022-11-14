@@ -45,7 +45,7 @@ func (c *Container) handleUdp(info *pkg.ServerProxyInfo) (error, *pkg.ClientProx
 				fmt.Println("error:", err)
 			}
 			fmt.Println(string(buf[:udp]))
-			userConn.Write(buf[:udp])
+			userConn.conn.Write(buf[:udp])
 			fmt.Println(addr.Port)
 		}
 	}()

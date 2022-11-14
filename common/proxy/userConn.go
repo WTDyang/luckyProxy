@@ -43,7 +43,7 @@ func (u UserConn) OnUserConnect() error {
 	return nil
 }
 
-// StartRead read user request to client with to write intranet service.
+// StartRead 读取用户对客户端的请求以写入intranet服务 .
 func (u UserConn) StartRead(clean func()) {
 	defer clean()
 
@@ -76,7 +76,7 @@ func (u UserConn) StartRead(clean func()) {
 	}
 }
 
-// StartWrite start Write intranet response to user
+// StartWrite 开始向用户写入intranet响应
 func (u UserConn) StartWrite(clean func()) {
 	defer clean()
 
