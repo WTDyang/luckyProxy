@@ -48,7 +48,7 @@ func main() {
 
 	api.MountRouters(server, svcContext)
 	//启动socks5代理
-	socks5.Run("tcp", "127.0.0.1", 1080)
+	go socks5.Run("tcp", "127.0.0.1", 1080)
 	//启动tcp代理
 	server.Start()
 }

@@ -247,9 +247,6 @@ func (s *Socket5) Connect(reader *bufio.Reader, conn net.Conn) (err error) {
 	return nil
 }
 func (s *Socket5) successWriteHost(conn io.Writer, ip []byte, addressType byte, port uint16) error {
-	//conn.Write([]byte{socks5Ver, succeeded, 0x00, atypIPV4, 0, 0, 0, 0, 0, 0})
-	//return nil
-	//log.Printf("ip : %v,type : %v,port : %v", ip, addressType, port)
 	if _, err := conn.Write([]byte{socks5Ver, succeeded, 0x00, addressType}); err != nil {
 		return fmt.Errorf("write failed: %w", err)
 	}
