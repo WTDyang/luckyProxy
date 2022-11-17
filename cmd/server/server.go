@@ -8,6 +8,7 @@ import (
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/zero-contrib/logx/zerologx"
 	"luckyProxy/common/logx"
+	socks5 "luckyProxy/common/socket5"
 	"luckyProxy/server"
 	"luckyProxy/server/api"
 	"luckyProxy/server/svc"
@@ -46,6 +47,8 @@ func main() {
 	svcContext := svc.NewServiceContext(sConfig)
 
 	api.MountRouters(server, svcContext)
-
+	//启动socks5代理
+	socks5.Run("tcp", "127.0.0.1", 1080)
+	//启动tcp代理
 	server.Start()
 }

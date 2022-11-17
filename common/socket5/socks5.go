@@ -1,4 +1,4 @@
-package main
+package socks5
 
 import (
 	"bufio"
@@ -14,7 +14,7 @@ import (
 type Socket5 struct {
 	Type string
 	ip   string
-	port string
+	port uint16
 }
 
 const (
@@ -46,11 +46,7 @@ const (
 	unassigned
 )
 
-func main() {
-	Run("tcp", "127.0.0.1", "1080")
-}
-
-func Run(Type string, ip string, port string) error {
+func Run(Type string, ip string, port uint16) error {
 	s := &Socket5{
 		Type: Type,
 		ip:   ip,
@@ -79,7 +75,7 @@ func Run(Type string, ip string, port string) error {
 }
 
 func (s *Socket5) GetAddr() string {
-	return s.ip + ":" + s.port
+	return fmt.Sprintf("%s:%d", s.ip, s.port)
 }
 
 func (s *Socket5) Handler(conn net.Conn) error {
