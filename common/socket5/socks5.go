@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"luckyProxy/common/logx"
 	"net"
 )
 
@@ -215,8 +216,7 @@ func (s *Socket5) Connect(reader *bufio.Reader, conn net.Conn) (err error) {
 	}
 
 	defer dest.Close()
-	log.Println("dial", addr, port)
-
+	logx.Debug().Msg(fmt.Sprintf("proxy : %s:%d -> %s", addr, port, conn.RemoteAddr()))
 	// +----+-----+-------+------+----------+----------+
 	// |VER | REP |  RSV  | ATYP | BND.ADDR | BND.PORT |
 	// +----+-----+-------+------+----------+----------+
@@ -249,7 +249,7 @@ func (s *Socket5) Connect(reader *bufio.Reader, conn net.Conn) (err error) {
 func (s *Socket5) successWriteHost(conn io.Writer, ip []byte, addressType byte, port uint16) error {
 	//conn.Write([]byte{socks5Ver, succeeded, 0x00, atypIPV4, 0, 0, 0, 0, 0, 0})
 	//return nil
-	log.Printf("ip : %v,type : %v,port : %v", ip, addressType, port)
+	//log.Printf("ip : %v,type : %v,port : %v", ip, addressType, port)
 	if _, err := conn.Write([]byte{socks5Ver, succeeded, 0x00, addressType}); err != nil {
 		return fmt.Errorf("write failed: %w", err)
 	}
