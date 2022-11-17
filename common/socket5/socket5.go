@@ -85,12 +85,12 @@ func (s *Socket5) GetAddr() string {
 func (s *Socket5) Handler(conn net.Conn) error {
 	defer conn.Close()
 	reader := bufio.NewReader(conn)
-	//进行认证
+	//进行认证 协商
 	err := s.Auth(reader, conn)
 	if err != nil {
 		return fmt.Errorf("client %v auth failed:%v", conn.RemoteAddr(), err)
 	}
-	//建立连接
+	//建立连接 开始转发
 	err = s.Connect(reader, conn)
 	if err != nil {
 		return fmt.Errorf("client %v auth failed:%v", conn.RemoteAddr(), err)
@@ -233,10 +233,7 @@ func (s *Socket5) Connect(reader *bufio.Reader, conn net.Conn) (err error) {
 	// BND.ADDR 服务绑定的地址
 	// BND.PORT 服务绑定的端口DST.PORT
 
-	log.Println(int8(Atype), "-", string(ip))
-	addrValue := dest.LocalAddr()
-	addrIP := addrValue.(*net.TCPAddr)
-	s.successWrite(conn, addrIP.IP, byte(Atype), port)
+	s.successWriteHost(conn, ip, byte(Atype), port)
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -253,12 +250,18 @@ func (s *Socket5) Connect(reader *bufio.Reader, conn net.Conn) (err error) {
 	<-ctx.Done()
 	return nil
 }
-func (s *Socket5) successWrite(conn io.Writer, ip net.IP, addressType byte, port uint16) error {
-	conn.Write([]byte{socks5Ver, succeeded, 0x00, atypIPV4, 0, 0, 0, 0, 0, 0})
-	return nil
-	log.Printf("%v,%v,%v", ip, atypIPV4, port)
+func (s *Socket5) successWriteHost(conn io.Writer, ip []byte, addressType byte, port uint16) error {
+	//conn.Write([]byte{socks5Ver, succeeded, 0x00, atypIPV4, 0, 0, 0, 0, 0, 0})
+	//return nil
+	log.Printf("ip : %v,type : %v,port : %v", ip, addressType, port)
 	if _, err := conn.Write([]byte{socks5Ver, succeeded, 0x00, addressType}); err != nil {
 		return fmt.Errorf("write failed: %w", err)
+	}
+	if addressType == atypeHOST {
+		length := []byte{byte(len(ip))}
+		if _, err := conn.Write(length); err != nil {
+			return fmt.Errorf("write failed: %w", err)
+		}
 	}
 	if _, err := conn.Write(ip); err != nil {
 		return fmt.Errorf("write failed: %w", err)
