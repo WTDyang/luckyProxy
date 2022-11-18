@@ -37,10 +37,10 @@ func (c *Container) handleUdp(info *pkg.ServerProxyInfo) (error, *pkg.ClientProx
 			//指定关闭连接方式
 			clean := c.CleanUserConn(userConn)
 
-			//客户端收到监听通知
+			//客户端与连接绑定
 			err = userConn.OnUserConnect()
 			if err != nil {
-				fmt.Printf("我是傻逼。都是我的错%v", err)
+				fmt.Printf("都是我的错%v", err)
 				clean()
 				continue
 			}

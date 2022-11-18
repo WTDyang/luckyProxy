@@ -7,7 +7,7 @@ tcp\udp代理使用NAT透明代理实现
 
 socks5使用socks5协议实现
 
- ![img:TCP\UDP代理拓扑图](doc/img/拓扑.png)
+ ![img:TCP\UDP代理拓扑图](doc/img/topology.png)
  
 包结构：
 ```
@@ -106,3 +106,11 @@ luckyProxy
 │           └─ types.go
 └─ utils.go                                                   //工具件
 ```
+
+socks5握手示意图
+
+![img.png](./doc/img/socks5.jpeg)
+
+NAT握手示意
+
+![img.png](./doc/img/proxy.png)
