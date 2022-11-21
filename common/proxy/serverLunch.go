@@ -26,7 +26,7 @@ func NewContainer(ws *wsx.Wsx, token string) *Container {
 	return &Container{Wsx: ws, Token: token, closers: []io.Closer{}, UserConnMap: make(map[string]*UserConn)}
 }
 
-// Lunch Start the local service and then generate the format of the proxy information required by the client
+// Lunch 启动本地服务，然后生成客户端所需的代理信息格式
 //
 func (c Container) Lunch(infos []*pkg.ServerProxyInfo) (error, []pkg.ClientProxyInfo, []io.Closer) {
 	var (

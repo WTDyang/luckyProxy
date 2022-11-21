@@ -1,6 +1,8 @@
 package proxy
 
 import (
+	"errors"
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/rs/zerolog"
 	"luckyProxy/common/logx"
@@ -100,4 +102,27 @@ func (u UserConn) Write(data []byte) {
 
 func (u UserConn) err(err error) *zerolog.Event {
 	return logx.Err(err).Str("connId", u.Id).Str("key", u.key)
+}
+func udpSend(Addr string, buf []byte) error {
+	index := strings.IndexAny(Addr, ":")
+	if index == -1 {
+		return errors.New("格式错误")
+	}
+	fmt.Println(Addr[:index])
+	if Addr[:index] == "localhost" {
+		Addr = "127.0.0.1" + Addr[index:]
+	}
+	fmt.Println(Addr, string(buf))
+	socket, err := net.Dial("udp", Addr)
+	if err != nil {
+		return err
+	}
+	defer func(socket net.Conn) {
+		err := socket.Close()
+		if err != nil {
+			logx.Err(err)
+		}
+	}(socket)
+	_, err = socket.Write(buf)
+	return err
 }

@@ -1,13 +1,11 @@
 package proxy
 
 import (
-	"errors"
 	"fmt"
 	"io"
 	pkg "luckyProxy/common"
 	"luckyProxy/common/logx"
 	"net"
-	"strings"
 )
 
 // handleUdp udp转发
@@ -63,27 +61,4 @@ func (c *Container) handleUdp(info *pkg.ServerProxyInfo) (error, *pkg.ClientProx
 	}()
 	fmt.Println("我到这里了！")
 	return nil, cp, udpConn
-}
-func udpSend(Addr string, buf []byte) error {
-	index := strings.IndexAny(Addr, ":")
-	if index == -1 {
-		return errors.New("格式错误")
-	}
-	fmt.Println(Addr[:index])
-	if Addr[:index] == "localhost" {
-		Addr = "127.0.0.1" + Addr[index:]
-	}
-	fmt.Println(Addr, string(buf))
-	socket, err := net.Dial("udp", Addr)
-	if err != nil {
-		return err
-	}
-	defer func(socket net.Conn) {
-		err := socket.Close()
-		if err != nil {
-			logx.Err(err)
-		}
-	}(socket)
-	_, err = socket.Write(buf)
-	return err
 }
