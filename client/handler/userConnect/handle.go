@@ -9,7 +9,7 @@ import (
 
 // Handle userConnect
 //
-// dail internet service
+// daily internet service
 func Handle(c *client.Client, userConnect protocal.UserConnect) {
 	proxy, ok := c.GetProxy(userConnect.Key)
 	if !ok {

@@ -14,7 +14,7 @@ func Dispatch(c *client.Client) func(bytes []byte) {
 	return func(bytes []byte) {
 		burst, err := protocal.Decode(bytes)
 		if err != nil {
-			logx.Err(err).Msg("decode burst")
+			logx.Err(err).Msg("decode proxy")
 			return
 		}
 

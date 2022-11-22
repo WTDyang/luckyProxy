@@ -5,7 +5,7 @@ import (
 	"luckyProxy/common/protocal"
 )
 
-// Handle handles addProxy burst.
+// Handle handles addProxy
 func Handle(c *client.Client, a protocal.AddProxy) {
 	c.AddProxy(a)
 }

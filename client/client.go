@@ -105,6 +105,8 @@ func (c *Client) GetProxy(key string) (pkg.ClientProxyInfo, bool) {
 	info, ok := c.proxy[key]
 	return info, ok
 }
+
+//GetProxyList get the proxy list created by zhe client
 func (c *Client) GetProxyList() map[string]string {
 	info := make(map[string]string)
 	for _, value := range c.proxy {
@@ -126,6 +128,7 @@ func (c Client) RemoveInterNetService(interNet *InternetService) {
 	delete(c.internet, interNet.connId)
 }
 
+//ReaderCommand read the command from cmd
 func (c *Client) ReaderCommand(f func(line string, client *Client)) {
 	lr := linereader.New(os.Stdin)
 
@@ -163,6 +166,7 @@ func (s InternetService) StartRead(c *Client, clean func()) {
 
 	for {
 		// todo read buffer size
+		logx.Info().Msg("一个连接接入")
 		buf := make([]byte, 1024)
 		n, err := s.conn.Read(buf)
 		if err != nil {
