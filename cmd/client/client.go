@@ -21,6 +21,8 @@ var (
 	cc        = flag.String("c", "client.yaml", "配置文件路径 e.g: ./client.yaml")
 	tokenFlag = flag.String("t", "", "指定连接token")
 	logFile   = flag.String("l", "./client.log", "日志输出路径, e.g: ./client.log")
+	username  = flag.String("u", "", "用户名, 	e.g: root")
+	password  = flag.String("p", "", "密码,	e.g: ******")
 	cConfig   client.Config
 	token     string
 )
@@ -72,7 +74,13 @@ func main() {
 //获取token
 func generateToken(serverAddr string) string {
 	logx.Info().Msg("未指定token，等待服务器生成......")
-	response, err := http.Get("http://" + serverAddr + "/user/auth")
+	mes := "username:" + *username + "-password:" + *password
+	logx.Info().Msg(mes)
+	url := "http://" + serverAddr + "/user/auth"
+	if username != nil && *username != "" {
+		url = url + "?username=" + *username + "&password=" + *password
+	}
+	response, err := http.Get(url)
 	if err != nil {
 		logx.Fatal().Err(err).Msgf("请求服务器[ %s ]生成token", serverAddr)
 	}
