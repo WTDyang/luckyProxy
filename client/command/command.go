@@ -14,7 +14,7 @@ type command interface {
 
 var (
 	commands = map[string]command{}
-	version  = "lucky::1.0.0"
+	version  = "lucky::1.2.4"
 )
 
 func init() {
