@@ -49,6 +49,9 @@ func (c Client) Token() string {
 func (c Client) ServerAddr() string {
 	return c.serverAddr
 }
+func (c Client) ServerHost() string {
+	return c.serverHost
+}
 
 // Connect  to server,and init connection
 func (c *Client) Connect(init func(wsx *wsx.Wsx)) {
@@ -110,7 +113,7 @@ func (c *Client) GetProxy(key string) (pkg.ClientProxyInfo, bool) {
 func (c *Client) GetProxyList() map[string]string {
 	info := make(map[string]string)
 	for _, value := range c.proxy {
-		info[value.IntranetAddr] = c.serverHost + ":" + strconv.Itoa(value.ServerPort)
+		info[value.IntranetAddr] = c.serverHost + ":" + strconv.Itoa(value.ServerPort) + "(" + value.ChannelType + ")"
 	}
 	return info
 }

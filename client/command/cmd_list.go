@@ -11,7 +11,7 @@ type (
 )
 
 func (q listCommand) help() {
-	fmt.Println("  l, ls, list: 展示代理端口")
+	fmt.Println("  l, ls, list: show the proxy ports")
 }
 
 func (q listCommand) run(strings []string, client *client.Client) {

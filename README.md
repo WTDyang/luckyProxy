@@ -1,14 +1,31 @@
 # luckyProxy
 go语言实现代理服务器
 
-支持 tcp\udp代理，http代理，websocket代理，socks5代理
+支持 tcp\udp,以及所有理论上集于tcp\udp的上层协议代理，http代理，websocket代理，socks5代理
 
 tcp\udp代理使用NAT透明代理实现
 
 socks5使用socks5协议实现
 
- ![img:TCP\UDP代理拓扑图](doc/img/topology.png)
- 
+## 主要功能：
+
+### NAT代理 
+
+- 代理握手
+- 增加代理端口（add port）
+
+  - TCP
+  - UDP
+
+- 删除代理端口（remove port）
+- 展示代理端口（list ports）
+- 帮助指令（help）
+
+### socks5
+
+- socks5代理
+
+
 包结构：
 ```
 luckyProxy
@@ -106,6 +123,8 @@ luckyProxy
 │           └─ types.go
 └─ utils.go                                                   //工具件
 ```
+
+ ![img:TCP\UDP代理拓扑图](doc/img/topology.png)
 
 socks5握手示意图
 
